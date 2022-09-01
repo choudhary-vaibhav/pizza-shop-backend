@@ -5,7 +5,9 @@ module.exports = {
             LOGIN : '/login',
             PROFILE : '/profile',
             DELETE : '/delete',
-            REGISTER : '/register'
+            REGISTER : '/register',
+            UPDATE : '/update',
+            CHANGE_PASSWORD : '/change'
         },
         ORDER : {
             ORDER_BOOK : '/order-book',

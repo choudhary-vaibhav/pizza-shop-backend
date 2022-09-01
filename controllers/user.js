@@ -6,12 +6,13 @@ module.exports = {
         //console.log(request.body);
         const userObject = request.body;
         console.log('USER #### ', userObject);
-        if(userObject.userid === userObject.password){
-            response.json({message:messages['welcome']+userObject.userid});
-        }
-        else{
-            response.json({message:messages['invalid']});
-        }
+        repo.find(userObject, response);
+        // if(userObject.userid === userObject.password){
+        //     response.json({message:messages['welcome']+userObject.userid});
+        // }
+        // else{
+        //     response.json({message:messages['invalid']});
+        // }
     },
     async register(request, response){
         const userObject = request.body;
@@ -30,14 +31,25 @@ module.exports = {
 
         // })
     },
+    update(request, response){
+        const userObject = request.body;
+        console.log(userObject);
+        repo.update(userObject, response);
+
+    },
     profile(request, response){
         const userObj = request.query; //?user=Amit (QueryString)
         console.log(userObj);
         response.json({message:'User Profile is ', userid: userObj.user})
     },
     deleteProfile(request, response){
-        console.log(request.params);
-        const user = request.params.user; // Path parameters
-        response.json({message:'User Delete Profile is ', userid: user});
+        const userObject = request.body;
+        console.log(userObject);
+        repo.remove(userObject, response);
+    },
+    changePwd(request, response){
+        const userObject = request.body;
+        console.log(userObject);
+        repo.changePassword(userObject, response);
     }
 }
